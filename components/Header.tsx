@@ -7,7 +7,6 @@ import { setCookie } from "../utils/cookies"
 export const Header: FC = () => {
   const { keycloak, keycloakInitialized } = useKeycloakContext()
   const { isServer, isAuthenticated, setIsAuthenticated } = useServerContext()
-  // console.log("login url", keycloak.createLoginUrl())
   /*
    * The purpose of this hook is to synchronize the Keycloak authentication
    * status with our custom cookie status (isAuthenticated).
@@ -84,20 +83,5 @@ export const Header: FC = () => {
         </>
       )}
     </header>
-    // <header>
-    //   <nav>
-    //     <Link href="/">
-    //       <a>Home</a>
-    //     </Link>{' '}
-    //     |{' '}
-    //     <Link href="/about">
-    //       <a>About</a>
-    //     </Link>{' '}
-    //     |{' '}
-    //     <Link href="/initial-props">
-    //       <a>With Initial Props</a>
-    //     </Link>
-    //   </nav>
-    // </header>
   )
 }
