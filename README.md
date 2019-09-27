@@ -1,54 +1,44 @@
-# TypeScript Next.js example
+# Next.js + Keycloak Example
 
-This is a really simple project that show the usage of Next.js with TypeScript.
+![Next.js + Keycloak screenshot](./static/screenshot.png)
+
+This is a simple project that shows how to integrate a Next.js app with [Keycloak](https://www.keycloak.org).
+
+It uses Typescript, taking advantage of the typings provided by [Keycloak's JS Adapter](https://www.npmjs.com/package/keycloak-js) and [panz3r's react-keycloak](https://www.npmjs.com/package/react-keycloak) package.
+
+## Dependencies
+
+- Node.js
+- Docker
 
 ## How to use it?
 
-### Using `create-next-app`
+### a) Launch the Keycloak server
 
-Execute [`create-next-app`](https://github.com/segmentio/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
+1. cd keycloak
+2. docker-compose up
 
-```bash
-npx create-next-app --example with-typescript with-typescript-app
-# or
-yarn create next-app --example with-typescript with-typescript-app
-```
+### b) Launch the web client
 
-### Download manually
+1. npm install
+2. npm run dev
 
-Download the example:
+## About This Example
 
-```bash
-curl https://codeload.github.com/zeit/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/with-typescript
-cd with-typescript
-```
+Our `KeycloakProvider` component is a straight up copied from panz3r's react-keycloak (https://github.com/panz3r/react-keycloak) repo.
 
-Install it and run:
+The reason we're re-implementing it here rather than import it is because running `import { KeycloakProvider } from 'react-keycloak'` will cause any SSR framework like Next.js to crash.
 
-```bash
-npm install
-npm run dev
-# or
-yarn
-yarn dev
-```
+Why? Because `react-keycloak` bundles up JBoss's `keycloak-js` (https://www.keycloak.org/docs/6.0/securing_apps/index.html#_javascript_adapter), which in turn invokes the `window` object. Since `window` is undefined on the server, it causes the import to crash.
 
-## The idea behind the example
+This example circumvents this problem by loading the Keycloak JS adapter only on the client-side.
 
-This example shows how to integrate the TypeScript type system into Next.js. Since TypeScript is supported out of the box with Next.js, all we have to do is to install TypeScript.
+The second problem implementing Keycloak with SSR is in managing the UI state: there can be both an "authenticated" version of the UI and an "unauthenticated" one.
 
-```
-npm install --save-dev typescript
-```
+In a SPA, this state is determined on the client-side by the JS adapter which stores this data in a session cookie in the browser.
 
-To enable TypeScript's features, we install the type declaratons for React and Node.
+This authentication state is typically inacessible to the server, causing the server to always render the "logged-out" state. This results in "component flashing", wherein the "logged-in" state of the UI blinks into being once Keycloak is initialized.
 
-```
-npm install --save-dev @types/react @types/react-dom @types/node
-```
+This example prevents this blinking effect by passing a custom cookie to the server containing the app's current authentication state. For example, the navbar will render the "Logout" and "My Account" buttons on the server, rather than waiting for confirmation from the client.
 
-When we run `next dev` the next time, Next.js will start looking for any `.ts` or `.tsx` files in our project and builds it. It even automatically creates a `tsconfig.json` file for our project with the recommended settings.
-
-Next.js has built-in TypeScript declarations, so we'll get autocompletion for Next.js' modules straight away.
-
-A `type-check` script is also added to `package.json`, which runs TypeScript's `tsc` CLI in `noEmit` mode to run type-checking separately. You can then include this, for example, in your `test` scripts.
+Note: the user info will "blink on" right now, but only because we aren't storing that data in the cookie as well.
