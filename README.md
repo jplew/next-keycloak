@@ -39,6 +39,8 @@ if (keycloakInitialized && keycloak.authenticated) {
 }
 ```
 
+**Note:** React Hooks are preferable over Higher Order Components since you don't have to specify the Keycloak props in every function signature.
+
 ## About This Example
 
 Our `KeycloakProvider` component is straight up copied from panz3r's excellent `react-keycloak` package (https://github.com/panz3r/react-keycloak).
