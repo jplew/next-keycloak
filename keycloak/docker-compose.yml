@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  keycloak:
+    restart: always
+    container_name: keycloak
+    image: jboss/keycloak:6.0.1
+    ports:
+      - "8080:8080"
+    environment:
+      - KEYCLOAK_USER=keycloak
+      - KEYCLOAK_PASSWORD=keycloak
+      - KEYCLOAK_IMPORT=/opt/jboss/keycloak/samplerealm.json
+    command:
+      - "-b 0.0.0.0"
+      # - "-Dkeycloak.import=/opt/jboss/keycloak/examples-realm.json"
+    volumes:
+      - "./samplerealm.json:/opt/jboss/keycloak/samplerealm.json"
+      # - "./ctoai-registry-keycloak-theme:/opt/jboss/keycloak/themes/cto"
