@@ -1,11 +1,3 @@
-/*
- * @author: JP Lew (jp@cto.ai)
- * @date: Friday, 2nd August 2019 2:23:51 pm
- * @lastModifiedBy: JP Lew (jp@cto.ai)
- * @lastModifiedTime: Thursday, 26th September 2019 4:23:49 pm
- * @copyright (c) 2019 CTO.ai
- */
-
 import Link from "next/link"
 import { FC, useEffect } from "react"
 
@@ -84,12 +76,7 @@ export const Header: FC = () => {
           <a
             className="m-2 btn btn-outline-primary"
             onClick={() => {
-              console.log("login url", keycloak.createLoginUrl())
-              console.log("account url", keycloak.createAccountUrl())
-              console.log("register url", keycloak.createRegisterUrl())
-              // keycloak.login()
-              // keycloak.accountManagement()
-              // window.location.href = keycloak.createLoginUrl()
+              window.location.href = keycloak.createLoginUrl()
             }}
           >
             Login

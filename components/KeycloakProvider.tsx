@@ -1,14 +1,3 @@
-/*
- * Author: JP Lew (jp@cto.ai)
- * Date: Tuesday, 9th July 2019 2:05:48 pm
- * Last Modified By: JP Lew (jp@cto.ai)
- * Last Modified Time: Tuesday, 9th July 2019 2:05:49 pm
- *
- * DESCRIPTION
- *
- * Copyright (c) 2019 CTO.ai
- */
-
 import { Component } from "react"
 
 import { KeycloakInstance } from "keycloak-js"

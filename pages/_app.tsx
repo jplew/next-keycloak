@@ -1,11 +1,3 @@
-/*
- * @author: JP Lew (jp@cto.ai)
- * @date: Wednesday, 17th July 2019 3:28:22 pm
- * @lastModifiedBy: JP Lew (jp@cto.ai)
- * @lastModifiedTime: Thursday, 26th September 2019 2:02:17 pm
- * @copyright (c) 2019 CTO.ai
- */
-
 import { AppContextType, AppType } from "next/dist/next-server/lib/utils"
 import Head from "next/head"
 

@@ -1,13 +1,3 @@
-/*
- * @author: JP Lew (jp@cto.ai)
- * @date: Wednesday, 31st July 2019 4:58:33 pm
- * @lastModifiedBy: JP Lew (jp@cto.ai)
- * @lastModifiedTime: Thursday, 1st August 2019 4:38:57 pm
- * @copyright (c) 2019 CTO.ai
- *
- *
- */
-
 import { KeycloakInstance } from "keycloak-js"
 import { AppContextType } from "next/dist/next-server/lib/utils"
 import { KeycloakEvent } from "react-keycloak"
