@@ -1,12 +1,13 @@
-import * as React from "react"
+import { FC } from "react"
 import Head from "next/head"
 import { Header } from "./Header"
+import { Footer } from "./Footer"
 
 type Props = {
   title?: string
 }
 
-const Layout: React.FunctionComponent<Props> = ({
+export const Layout: FC<Props> = ({
   children,
   title = "Next.js + Keycloak Example"
 }) => (
@@ -22,16 +23,7 @@ const Layout: React.FunctionComponent<Props> = ({
     </Head>
 
     <Header />
-
     <div className="container my-5">{children}</div>
-
-    <footer className="footer">
-      <hr />
-      <div className="container">
-        <span className="text-muted">This is the footer.</span>
-      </div>
-    </footer>
+    <Footer />
   </div>
 )
-
-export default Layout

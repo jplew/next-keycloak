@@ -13,7 +13,5 @@ services:
       - KEYCLOAK_IMPORT=/opt/jboss/keycloak/samplerealm.json
     command:
       - "-b 0.0.0.0"
-      # - "-Dkeycloak.import=/opt/jboss/keycloak/examples-realm.json"
     volumes:
       - "./samplerealm.json:/opt/jboss/keycloak/samplerealm.json"
-      # - "./ctoai-registry-keycloak-theme:/opt/jboss/keycloak/themes/cto"

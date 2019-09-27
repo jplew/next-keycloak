@@ -37,9 +37,6 @@ export const Header: FC = () => {
         <Link href="/profile">
           <a className="p-2 text-dark">Profile</a>
         </Link>
-        <Link href={{ pathname: "/posts" }}>
-          <a className="p-2 text-dark">Posts</a>
-        </Link>
       </nav>
       {// either the client (keycloak.authenticated) or the server (isAuthenticated cookie) has to assert that the user is logged in
       keycloak.authenticated || (isServer && isAuthenticated === "true") ? (
@@ -64,22 +61,24 @@ export const Header: FC = () => {
         </>
       ) : (
         <>
-          <a
-            className="m-2 btn btn-outline-primary"
+          <button
+            type="button"
+            className="mx-2 btn btn-outline-primary"
             onClick={() =>
               (window.location.href = keycloak.createRegisterUrl())
             }
           >
             Signup
-          </a>
-          <a
-            className="m-2 btn btn-outline-primary"
+          </button>
+          <button
+            type="button"
+            className="mx-2 btn btn-outline-primary"
             onClick={() => {
               window.location.href = keycloak.createLoginUrl()
             }}
           >
             Login
-          </a>
+          </button>
         </>
       )}
     </header>
