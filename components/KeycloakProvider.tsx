@@ -94,7 +94,7 @@ export class KeycloakProvider extends Component<ProviderProps> {
     // Avoid double-refresh if state hasn't changed
     if (!prevInitialized || newToken !== prevToken) {
       this.setState({
-        initialized: true,
+        keycloakInitialized: true,
         token: newToken
       })
     }
