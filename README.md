@@ -27,7 +27,7 @@ It uses Typescript, taking advantage of the typings provided by [Keycloak's JS A
 
 You can access the `keycloak` object from any component using the `useKeycloakContext` React Hook:
 
-```javascript
+```js
 import { useKeycloakContext } from "../utils/context"
 
 const { keycloak, keycloakInitialized } = useKeycloakContext()
