@@ -1,3 +1,11 @@
+# -------------------------
+## Note: This example repo is deprecated
+
+Since my last commit, panz3r added SSR support to his NPM package: [@react-keycloak/ssr](https://www.npmjs.com/package/react-keycloak). Use that since it is being actively maintained.
+
+# -------------------------
+
+
 # Next.js + Keycloak Example
 
 This is a simple project demonstrating how to integrate a Next.js app with [Keycloak](https://www.keycloak.org).
